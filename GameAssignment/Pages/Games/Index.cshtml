@@ -1,0 +1,48 @@
+﻿@page
+@model GameAssignment.Pages.Games.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Game[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Game[0].MaximumPlayers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Game[0].ReleaseYear)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Game) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaximumPlayers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseYear)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.GameID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.GameID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.GameID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
